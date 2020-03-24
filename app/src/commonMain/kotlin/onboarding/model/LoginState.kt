@@ -1,6 +1,6 @@
 package onboarding.model
 
-class LoginState(
+data class LoginState(
     val loginButtonEnabled:Boolean = false,
     val registrationButtonEnabled:Boolean = true,
     val loadingActive:Boolean = false,
