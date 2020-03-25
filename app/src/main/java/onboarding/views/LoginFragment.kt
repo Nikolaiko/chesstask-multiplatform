@@ -1,22 +1,31 @@
 package onboarding.views
 
+import PREFS_NAME
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_login.*
+import network.api.UserApi
 import onboarding.AuthDataChangeCallback
 import onboarding.VoidCallback
 import onboarding.model.enums.LoginDestinationId
 import onboarding.model.enums.LoginMessageId
+import onboarding.presenters.LoginPresenter
 import onboarding.reducers.LoginReducer
+import repository.LoggedUserRepository
 import sample.R
 
 class LoginFragment : Fragment(), LoginView {
+    private var presenter: LoginPresenter? = null
+
     override var registerCallback: VoidCallback? = null
     override var loginCallback: VoidCallback? = null
     override var credentialsChangeCallback: AuthDataChangeCallback? = null
@@ -27,6 +36,16 @@ class LoginFragment : Fragment(), LoginView {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val loggedUserRepository = LoggedUserRepository(
+            context!!.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        )
+        val reducer = LoginReducer(loggedUserRepository, UserApi())
+        presenter = LoginPresenter(reducer)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,6 +74,8 @@ class LoginFragment : Fragment(), LoginView {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
+
+        presenter?.attachView(this)
     }
 
     override fun setRegisterButtonEnabled(isEnabled: Boolean) {
@@ -91,10 +112,14 @@ class LoginFragment : Fragment(), LoginView {
     }
 
     override fun displayMessage(messageId: LoginMessageId) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        activity?.runOnUiThread {
+            Toast.makeText(context!!, messageId.name, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun navigateTo(destination: LoginDestinationId) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        NavHostFragment
+            .findNavController(this)
+            .navigate(R.id.action_loginFragment_to_registerFragment)
     }
 }

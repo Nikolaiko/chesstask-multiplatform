@@ -27,9 +27,11 @@ class LoginReducer(
 
     fun tryToLoading() {
         userApi.loginUser(userAuthorizationUserData, {
+            println(it)
             loggedUserRepository.setLoggedUserTokens(it)
             newsCallback?.invoke(LoginNewsId.NAVIGATE_TO_TASKS_LIST)
         }, {
+            println(it.message)
             newsCallback?.invoke(LoginNewsId.REQUEST_EXCEPTION)
             loginState = LoginState(loginButtonEnabled = true)
             updateStateCallback?.invoke(loginState)
