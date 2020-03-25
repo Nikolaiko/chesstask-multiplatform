@@ -1,0 +1,1 @@
+const val PREFS_NAME = "chess_prefs"
