@@ -10,7 +10,6 @@ import network.ApiExceptionHandler
 import network.ApiLoginHandler
 
 class UserApi : BaseApi() {
-    private val supervisorJob = Job()
     private val apiContext = CoroutineScope(Dispatchers.Unconfined + supervisorJob)
 
     fun loginUser(
