@@ -9,14 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_login.*
 import network.api.UserApi
 import onboarding.AuthDataChangeCallback
 import onboarding.VoidCallback
-import onboarding.model.enums.LoginDestinationId
+import onboarding.model.enums.OnBoardingDestinationId
 import onboarding.model.enums.LoginMessageId
 import onboarding.presenters.LoginPresenter
 import onboarding.reducers.LoginReducer
@@ -36,6 +35,11 @@ class LoginFragment : Fragment(), LoginView {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter?.detachView()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,9 +121,21 @@ class LoginFragment : Fragment(), LoginView {
         }
     }
 
-    override fun navigateTo(destination: LoginDestinationId) {
-        NavHostFragment
-            .findNavController(this)
-            .navigate(R.id.action_loginFragment_to_registerFragment)
+    override fun navigateTo(destination: OnBoardingDestinationId) {
+        when(destination) {
+            OnBoardingDestinationId.REGISTER_SCREEN -> {
+                NavHostFragment
+                    .findNavController(this)
+                    .navigate(R.id.action_loginFragment_to_registerFragment)
+            }
+            OnBoardingDestinationId.TASKS_LIST_SCREEN -> {
+                NavHostFragment
+                    .findNavController(this)
+                    .navigate(R.id.action_loginFragment_to_tasksListFragment)
+            }
+            else -> {
+                displayMessage(LoginMessageId.UNKNOWN_DESTINATION)
+            }
+        }
     }
 }

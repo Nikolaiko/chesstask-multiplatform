@@ -2,12 +2,12 @@ package onboarding.views
 
 import onboarding.AuthDataChangeCallback
 import onboarding.VoidCallback
-import onboarding.model.enums.OnBoardingDestinationId
 import onboarding.model.enums.LoginMessageId
+import onboarding.model.enums.OnBoardingDestinationId
 
-interface LoginView {
+interface RegisterView {
     fun setRegisterButtonEnabled(isEnabled:Boolean)
-    fun setLoginButtonEnabled(isEnabled:Boolean)
+    fun setBackButtonEnabled(isEnabled:Boolean)
     fun setPasswordTextEnabled(isEnabled:Boolean)
     fun setLoginTextEnabled(isEnabled:Boolean)
     fun setLoading(isLoading:Boolean)
@@ -16,6 +16,6 @@ interface LoginView {
     fun navigateTo(destination: OnBoardingDestinationId)
 
     var registerCallback: VoidCallback?
-    var loginCallback: VoidCallback?
+    var backCallback: VoidCallback?
     var credentialsChangeCallback: AuthDataChangeCallback?
 }

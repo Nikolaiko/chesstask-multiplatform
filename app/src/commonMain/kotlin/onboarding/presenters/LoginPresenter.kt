@@ -1,9 +1,9 @@
 package onboarding.presenters
 
 import core.model.AuthorizationUserData
-import onboarding.model.enums.LoginDestinationId
+import onboarding.model.enums.OnBoardingDestinationId
 import onboarding.model.enums.LoginMessageId
-import onboarding.model.enums.LoginNewsId
+import onboarding.model.enums.OnBoardingNewsId
 import onboarding.reducers.LoginReducer
 import onboarding.views.LoginView
 
@@ -36,9 +36,10 @@ class LoginPresenter(
 
         reducer.newsCallback = {
             when(it) {
-                LoginNewsId.REQUEST_EXCEPTION -> view?.displayMessage(LoginMessageId.REQUEST_EXCEPTION)
-                LoginNewsId.NAVIGATE_TO_REGISTER -> view?.navigateTo(LoginDestinationId.REGISTER_SCREEN)
-                LoginNewsId.NAVIGATE_TO_TASKS_LIST -> view?.navigateTo(LoginDestinationId.TASKS_LIST_SCREEN)
+                OnBoardingNewsId.REQUEST_EXCEPTION -> view?.displayMessage(LoginMessageId.REQUEST_EXCEPTION)
+                OnBoardingNewsId.NAVIGATE_TO_REGISTER -> view?.navigateTo(OnBoardingDestinationId.REGISTER_SCREEN)
+                OnBoardingNewsId.NAVIGATE_TO_TASKS_LIST -> view?.navigateTo(OnBoardingDestinationId.TASKS_LIST_SCREEN)
+                OnBoardingNewsId.NAVIGATE_TO_LOGIN -> view?.navigateTo(OnBoardingDestinationId.UNKNOWN_DESTINATION)
             }
         }
 

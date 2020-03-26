@@ -3,9 +3,9 @@ package onboarding.reducers
 import core.model.AuthorizationUserData
 import network.api.UserApi
 import onboarding.NewsCallback
-import onboarding.StateChangeCallback
+import onboarding.LoginStateChangeCallback
 import onboarding.isUserDataCorrect
-import onboarding.model.enums.LoginNewsId
+import onboarding.model.enums.OnBoardingNewsId
 import onboarding.model.LoginState
 import repository.LoggedUserRepository
 
@@ -13,7 +13,7 @@ class LoginReducer(
     private val loggedUserRepository: LoggedUserRepository,
     private val userApi: UserApi
 ) {
-    var updateStateCallback: StateChangeCallback? = null
+    var updateStateCallback: LoginStateChangeCallback? = null
     var newsCallback: NewsCallback? = null
 
     private var userAuthorizationUserData = AuthorizationUserData("", "")
@@ -27,12 +27,11 @@ class LoginReducer(
 
     fun tryToLoading() {
         userApi.loginUser(userAuthorizationUserData, {
-            println(it)
             loggedUserRepository.setLoggedUserTokens(it)
-            newsCallback?.invoke(LoginNewsId.NAVIGATE_TO_TASKS_LIST)
+            newsCallback?.invoke(OnBoardingNewsId.NAVIGATE_TO_TASKS_LIST)
         }, {
             println(it.message)
-            newsCallback?.invoke(LoginNewsId.REQUEST_EXCEPTION)
+            newsCallback?.invoke(OnBoardingNewsId.REQUEST_EXCEPTION)
             loginState = LoginState(loginButtonEnabled = true)
             updateStateCallback?.invoke(loginState)
         })
@@ -46,6 +45,6 @@ class LoginReducer(
     }
 
     fun moveToRegister() {
-        newsCallback?.invoke(LoginNewsId.NAVIGATE_TO_REGISTER)
+        newsCallback?.invoke(OnBoardingNewsId.NAVIGATE_TO_REGISTER)
     }
 }

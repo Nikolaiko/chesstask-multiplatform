@@ -11,7 +11,7 @@ import io.ktor.http.URLProtocol
 open class BaseApi {
     companion object {
         private const val SERVER_ADDRESS = "92.242.40.194"
-        private const val SERVER_PORT = 80
+        private const val SERVER_PORT = 1337
     }
 
     private val client = HttpClient {
@@ -20,7 +20,7 @@ open class BaseApi {
 
     protected var requestEncodedPath = ""
 
-    suspend protected fun makePostRequest(
+    protected suspend fun makePostRequest(
         requestBody:Any = "",
         parameters:List<Pair<String, String>> = emptyList(),
         requestHeaders:List<Pair<String, String>> = emptyList()
