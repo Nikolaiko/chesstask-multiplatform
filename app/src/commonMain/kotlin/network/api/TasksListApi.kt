@@ -1,11 +1,14 @@
 package network.api
 
-import core.model.TaskShortData
+import core.model.ChessTaskShortData
+import network.model.TaskShortData
 import io.ktor.client.statement.readText
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import kotlinx.serialization.list
+import network.ApiExceptionHandler
+import network.ApiTasksListHandler
 
 class TasksListApi : BaseApi() {
     private val apiContext = CoroutineScope(Dispatchers.Unconfined + supervisorJob)
@@ -14,19 +17,27 @@ class TasksListApi : BaseApi() {
         requestEncodedPath = "/tasks"
     }
 
-    fun getAllTasks() {
+    fun getAllTasks(
+        token: String,
+        tasksCallback: ApiTasksListHandler,
+        exceptionCallback: ApiExceptionHandler
+    ) {
         apiContext.launch {
             try {
-                val tasks = requestAsync().await()
-            } catch (loginException: Exception) {
-
+                val tasks = requestAsync(token).await()
+                val parsedTasks = tasks.map {
+                    ChessTaskShortData(it.id, it.name)
+                }
+                tasksCallback(parsedTasks)
+            } catch (tasksListException: Exception) {
+                exceptionCallback(tasksListException)
             }
         }
     }
 
-    private fun requestAsync(): Deferred<List<TaskShortData>> = apiContext.async {
+    private fun requestAsync(token: String): Deferred<List<TaskShortData>> = apiContext.async {
         val json = Json(JsonConfiguration.Stable)
-        val response = makeGetRequest()
+        val response = makeGetRequest(requestHeaders = listOf(Pair("Authorization", "Bearer $token")))
         json.parse(TaskShortData.serializer().list, response.readText())
     }
 }
