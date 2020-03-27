@@ -10,6 +10,7 @@
         <action
                 android:id="@+id/action_mainFragment_to_loginFragment"
                 app:destination="@id/loginFragment" />
+        <action android:id="@+id/action_mainFragment_to_tasksListFragment" app:destination="@id/tasksListFragment"/>
     </fragment>
     <fragment
             android:id="@+id/loginFragment"

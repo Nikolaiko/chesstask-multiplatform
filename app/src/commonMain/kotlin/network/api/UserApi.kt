@@ -3,11 +3,14 @@ package network.api
 import core.model.AuthorizationUserData
 import core.model.UserToken
 import io.ktor.client.statement.readText
+import io.ktor.http.ContentType
+import io.ktor.http.content.TextContent
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import network.ApiExceptionHandler
 import network.ApiLoginHandler
+import network.model.NewUserData
 
 class UserApi : BaseApi() {
     private val apiContext = CoroutineScope(Dispatchers.Unconfined + supervisorJob)
@@ -17,10 +20,10 @@ class UserApi : BaseApi() {
         loginCallback: ApiLoginHandler,
         exceptionCallback: ApiExceptionHandler
     ) {
-        requestEncodedPath = "/user/signin"
         apiContext.launch {
             try {
-                val tokens = requestAsync(loginData).await()
+                requestEncodedPath = "/api/v1/user/signin"
+                val tokens = loginAsync(loginData).await()
                 loginCallback(tokens)
             } catch (loginException: Exception) {
                 exceptionCallback(loginException)
@@ -33,10 +36,13 @@ class UserApi : BaseApi() {
         registerCallback: ApiLoginHandler,
         exceptionCallback: ApiExceptionHandler
     ) {
-        requestEncodedPath = "/user/signup"
         apiContext.launch {
             try {
-                val tokens = requestAsync(registerData).await()
+                requestEncodedPath = "/api/v1/user/signup"
+                registerAsync(registerData).await()
+
+                requestEncodedPath = "/api/v1/user/signin"
+                val tokens = loginAsync(registerData).await()
                 registerCallback(tokens)
             } catch (loginException: Exception) {
                 exceptionCallback(loginException)
@@ -44,10 +50,19 @@ class UserApi : BaseApi() {
         }
     }
 
-    private fun requestAsync(loginData: AuthorizationUserData): Deferred<UserToken> = apiContext.async {
+    private fun loginAsync(loginData: AuthorizationUserData): Deferred<UserToken> = apiContext.async {
         val json = Json(JsonConfiguration.Stable)
         val jsonBody = json.stringify(AuthorizationUserData.serializer(), loginData)
-        val response = makePostRequest(requestBody = jsonBody)
+        val response = makePostRequest(requestBody = TextContent(jsonBody, contentType = ContentType.Application.Json))
+        println(response)
         json.parse(UserToken.serializer(), response.readText())
+    }
+
+    private fun registerAsync(loginData: AuthorizationUserData): Deferred<NewUserData> = apiContext.async {
+        val json = Json(JsonConfiguration.Stable)
+        val jsonBody = json.stringify(AuthorizationUserData.serializer(), loginData)
+        val response = makePostRequest(requestBody = TextContent(jsonBody, contentType = ContentType.Application.Json))
+        println(response)
+        json.parse(NewUserData.serializer(), response.readText())
     }
 }

@@ -15,7 +15,7 @@ actual class LoggedUserRepository(private val sharedPreferences: SharedPreferenc
         loggedUserTokens = tokens
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
-        editor.putString(USER_NAME_ACCESS_TOKEN, tokens.accessToken)
+        editor.putString(USER_NAME_ACCESS_TOKEN, tokens.token)
         editor.apply()
     }
 

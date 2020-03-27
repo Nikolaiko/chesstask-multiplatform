@@ -35,8 +35,9 @@ class MainFragment : Fragment() {
                 .findNavController(this)
                 .navigate(R.id.action_mainFragment_to_loginFragment)
         } else {
-            //tasksListMediator.createTasksListActivity(this)
-            //finish()
+            NavHostFragment
+                .findNavController(this)
+                .navigate(R.id.action_mainFragment_to_tasksListFragment)
         }
     }
 }

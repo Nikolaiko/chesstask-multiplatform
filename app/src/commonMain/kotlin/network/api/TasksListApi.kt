@@ -14,7 +14,7 @@ class TasksListApi : BaseApi() {
     private val apiContext = CoroutineScope(Dispatchers.Unconfined + supervisorJob)
 
     init {
-        requestEncodedPath = "/tasks"
+        requestEncodedPath = "/api/v1/tasks"
     }
 
     fun getAllTasks(
@@ -38,6 +38,7 @@ class TasksListApi : BaseApi() {
     private fun requestAsync(token: String): Deferred<List<TaskShortData>> = apiContext.async {
         val json = Json(JsonConfiguration.Stable)
         val response = makeGetRequest(requestHeaders = listOf(Pair("Authorization", "Bearer $token")))
+        println(response)
         json.parse(TaskShortData.serializer().list, response.readText())
     }
 }
