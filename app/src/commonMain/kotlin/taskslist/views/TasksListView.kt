@@ -1,5 +1,6 @@
 package taskslist.views
 
+import core.model.ChessTaskFullData
 import core.model.ChessTaskShortData
 import taskslist.SelectedTaskCallback
 import taskslist.VoidCallback
@@ -14,4 +15,5 @@ interface TasksListView {
     fun navigateTo(destination: TasksListDestinationId)
     fun setLoadingVisibility(visible: Boolean)
     fun updateTasksList(list: List<ChessTaskShortData>)
+    fun loadedTaskReady(task: ChessTaskFullData)
 }

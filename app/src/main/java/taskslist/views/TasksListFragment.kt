@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import core.model.ChessTaskFullData
 import core.model.ChessTaskShortData
 import kotlinx.android.synthetic.main.fragment_tasks_list.*
+import network.api.SingleTaskApi
 import network.api.TasksListApi
 import repository.LoggedUserRepository
 import sample.R
@@ -44,19 +46,19 @@ class TasksListFragment() : Fragment(), TasksListView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        logoutButton.setOnClickListener {
-            logoutCallback?.invoke()
-        }
-
         val loggedUserRepository = LoggedUserRepository(
             context!!.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         )
-        val reducer = TasksListReducer(loggedUserRepository, TasksListApi())
+        val reducer = TasksListReducer(loggedUserRepository, TasksListApi(), SingleTaskApi())
         presenter = TasksListPresenter(reducer)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        logoutButton.setOnClickListener {
+            logoutCallback?.invoke()
+        }
 
         listAdapter = TasksListAdapter()
         listAdapter?.rowClickCallback = {
@@ -82,7 +84,7 @@ class TasksListFragment() : Fragment(), TasksListView {
                 TasksListDestinationId.LOGIN_SCREEN -> {
                     NavHostFragment
                         .findNavController(this)
-                        .popBackStack()
+                        .navigate(R.id.action_tasksListFragment_to_loginFragment)
                 }
                 TasksListDestinationId.SINGLE_TASK -> {
                     NavHostFragment
@@ -107,5 +109,11 @@ class TasksListFragment() : Fragment(), TasksListView {
         activity?.runOnUiThread {
             listAdapter?.tasks = list
         }
+    }
+
+    override fun loadedTaskReady(task: ChessTaskFullData) {
+        NavHostFragment
+            .findNavController(this)
+            .navigate(R.id.action_tasksListFragment_to_singleTaskFragment)
     }
 }

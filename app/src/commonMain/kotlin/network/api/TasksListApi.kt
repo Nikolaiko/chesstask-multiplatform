@@ -7,6 +7,7 @@ import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import kotlinx.serialization.list
+import network.API_VERSION
 import network.ApiExceptionHandler
 import network.ApiTasksListHandler
 
@@ -14,7 +15,7 @@ class TasksListApi : BaseApi() {
     private val apiContext = CoroutineScope(Dispatchers.Unconfined + supervisorJob)
 
     init {
-        requestEncodedPath = "/api/v1/tasks"
+        requestEncodedPath = "/api/$API_VERSION/tasks"
     }
 
     fun getAllTasks(

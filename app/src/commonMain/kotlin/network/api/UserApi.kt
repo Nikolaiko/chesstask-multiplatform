@@ -8,6 +8,7 @@ import io.ktor.http.content.TextContent
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
+import network.API_VERSION
 import network.ApiExceptionHandler
 import network.ApiLoginHandler
 import network.model.NewUserData
@@ -22,7 +23,7 @@ class UserApi : BaseApi() {
     ) {
         apiContext.launch {
             try {
-                requestEncodedPath = "/api/v1/user/signin"
+                requestEncodedPath = "/api/$API_VERSION/user/signin"
                 val tokens = loginAsync(loginData).await()
                 loginCallback(tokens)
             } catch (loginException: Exception) {

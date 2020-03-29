@@ -9,8 +9,10 @@
             android:label="MainFragment" >
         <action
                 android:id="@+id/action_mainFragment_to_loginFragment"
-                app:destination="@id/loginFragment" />
-        <action android:id="@+id/action_mainFragment_to_tasksListFragment" app:destination="@id/tasksListFragment"/>
+                app:destination="@id/loginFragment" app:popUpTo="@+id/nav_graph" app:popUpToInclusive="true"
+                app:launchSingleTop="true"/>
+        <action android:id="@+id/action_mainFragment_to_tasksListFragment" app:destination="@id/tasksListFragment"
+                app:popUpTo="@+id/nav_graph" app:launchSingleTop="true" app:popUpToInclusive="true"/>
     </fragment>
     <fragment
             android:id="@+id/loginFragment"
@@ -24,5 +26,12 @@
         <action android:id="@+id/action_registerFragment_to_tasksListFragment" app:destination="@id/tasksListFragment"/>
     </fragment>
     <fragment android:id="@+id/tasksListFragment" android:name="taskslist.views.TasksListFragment"
-              android:label="TasksListFragment"/>
+              android:label="TasksListFragment">
+        <action android:id="@+id/action_tasksListFragment_to_loginFragment" app:destination="@id/loginFragment"
+                app:popUpTo="@+id/nav_graph" app:popUpToInclusive="true" app:launchSingleTop="true"/>
+        <action android:id="@+id/action_tasksListFragment_to_singleTaskFragment"
+                app:destination="@id/singleTaskFragment"/>
+    </fragment>
+    <fragment android:id="@+id/singleTaskFragment" android:name="singletask.views.SingleTaskFragment"
+              android:label="SingleTaskFragment"/>
 </navigation>

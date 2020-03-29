@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class NewUserData(
     val id: Int,
     val email: String,
-    val date_joined: String
+    val joined_at: Int
 )
