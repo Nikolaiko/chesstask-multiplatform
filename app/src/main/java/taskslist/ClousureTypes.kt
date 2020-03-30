@@ -1,5 +1,5 @@
 package taskslist
 
-import core.model.ChessTaskShortData
+import core.model.task.ChessTaskShortData
 
 typealias RowClickCallback = (ChessTaskShortData) -> Unit

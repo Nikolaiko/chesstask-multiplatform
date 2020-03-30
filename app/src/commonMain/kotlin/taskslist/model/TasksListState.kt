@@ -1,7 +1,6 @@
 package taskslist.model
 
-import core.model.ChessTaskFullData
-import core.model.ChessTaskShortData
+import core.model.task.ChessTaskShortData
 
 data class TasksListState(
     val loadingActive: Boolean,

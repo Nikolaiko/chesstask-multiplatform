@@ -1,6 +1,6 @@
 package repository
 
-import core.model.UserToken
+import core.model.user.UserToken
 
 actual class LoggedUserRepository {
     actual fun setLoggedUserTokens(tokens: UserToken) {

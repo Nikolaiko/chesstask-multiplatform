@@ -1,6 +1,9 @@
 package taskslist.views
 
 import PREFS_NAME
+import TASK_FEN_PARAMETER
+import TASK_ID_PARAMETER
+import TASK_PGN_PARAMETER
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +12,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import core.model.ChessTaskFullData
-import core.model.ChessTaskShortData
+import core.model.task.ChessTask
+import core.model.task.ChessTaskFullData
+import core.model.task.ChessTaskShortData
 import kotlinx.android.synthetic.main.fragment_tasks_list.*
 import network.api.SingleTaskApi
 import network.api.TasksListApi
 import repository.LoggedUserRepository
 import sample.R
+import singletask.views.SingleTaskFragment
 import taskslist.SelectedTaskCallback
 import taskslist.VoidCallback
 import taskslist.model.enum.TasksListDestinationId
@@ -111,7 +116,8 @@ class TasksListFragment() : Fragment(), TasksListView {
         }
     }
 
-    override fun loadedTaskReady(task: ChessTaskFullData) {
+    override fun loadedTaskReady(task: ChessTask) {
+        SingleTaskFragment.selectedTask = task
         NavHostFragment
             .findNavController(this)
             .navigate(R.id.action_tasksListFragment_to_singleTaskFragment)

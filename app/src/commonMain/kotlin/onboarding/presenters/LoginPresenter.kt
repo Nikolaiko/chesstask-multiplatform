@@ -1,6 +1,6 @@
 package onboarding.presenters
 
-import core.model.AuthorizationUserData
+import core.model.user.AuthorizationUserData
 import onboarding.model.enums.OnBoardingDestinationId
 import onboarding.model.enums.LoginMessageId
 import onboarding.model.enums.OnBoardingNewsId
@@ -23,7 +23,12 @@ class LoginPresenter(
 
     private fun bindToView() {
         view?.credentialsChangeCallback = {
-            reducer.authorizationDataChange(AuthorizationUserData(it.first(), it.last()))
+            reducer.authorizationDataChange(
+                AuthorizationUserData(
+                    it.first(),
+                    it.last()
+                )
+            )
         }
 
         view?.loginCallback = {

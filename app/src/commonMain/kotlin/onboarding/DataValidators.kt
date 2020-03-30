@@ -1,6 +1,6 @@
 package onboarding
 
-import core.model.AuthorizationUserData
+import core.model.user.AuthorizationUserData
 
 const val MIN_EMAIL_LENGTH: Int = 3
 

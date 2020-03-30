@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import core.model.UserToken
+import core.model.user.UserToken
 import repository.LoggedUserRepository
 import sample.R
 

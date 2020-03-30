@@ -1,10 +1,10 @@
 package network
 
-import core.model.ChessTaskFullData
-import core.model.ChessTaskShortData
-import core.model.UserToken
+import core.model.task.ChessTask
+import core.model.task.ChessTaskShortData
+import core.model.user.UserToken
 
 typealias ApiExceptionHandler = (exception: Exception) -> Unit
 typealias ApiLoginHandler = (userToken: UserToken) -> Unit
 typealias ApiTasksListHandler = (tasks: List<ChessTaskShortData>) -> Unit
-typealias ApiTaskListHandler = (task: ChessTaskFullData) -> Unit
+typealias ApiTaskHandler = (task: ChessTask) -> Unit

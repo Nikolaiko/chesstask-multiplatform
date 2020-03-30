@@ -33,5 +33,9 @@
                 app:destination="@id/singleTaskFragment"/>
     </fragment>
     <fragment android:id="@+id/singleTaskFragment" android:name="singletask.views.SingleTaskFragment"
-              android:label="SingleTaskFragment"/>
+              android:label="SingleTaskFragment">
+        <argument android:name="task_id" app:argType="integer" android:defaultValue="-1"/>
+        <argument android:name="fen" app:argType="string" android:defaultValue="empty"/>
+        <argument android:name="pgn" app:argType="string" android:defaultValue="empty"/>
+    </fragment>
 </navigation>

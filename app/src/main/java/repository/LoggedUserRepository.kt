@@ -1,7 +1,7 @@
 package repository
 
 import android.content.SharedPreferences
-import core.model.UserToken
+import core.model.user.UserToken
 
 actual class LoggedUserRepository(private val sharedPreferences: SharedPreferences) {
     companion object {

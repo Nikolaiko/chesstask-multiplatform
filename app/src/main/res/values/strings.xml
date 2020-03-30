@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Multiplatform Chess</string>
+
+    <string name="default_image_description">default description</string>
+    <string name="reveal_answer_button_title">Reveal Answer</string>
+    <string name="task_label_title">Checkmate in %1$d turns</string>
 </resources>

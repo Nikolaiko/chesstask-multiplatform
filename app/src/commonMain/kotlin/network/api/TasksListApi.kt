@@ -1,6 +1,6 @@
 package network.api
 
-import core.model.ChessTaskShortData
+import core.model.task.ChessTaskShortData
 import network.model.TaskShortData
 import io.ktor.client.statement.readText
 import kotlinx.coroutines.*

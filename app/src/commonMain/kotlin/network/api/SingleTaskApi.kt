@@ -1,18 +1,17 @@
 package network.api
 
-import core.model.ChessTaskFullData
-import core.model.ChessTaskShortData
+import core.model.task.ChessTask
+import core.parsers.getStartingColor
+import core.parsers.getStartingPositions
+import core.parsers.parsePgnString
 import io.ktor.client.statement.readText
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import kotlinx.serialization.list
 import network.API_VERSION
 import network.ApiExceptionHandler
-import network.ApiTaskListHandler
+import network.ApiTaskHandler
 import network.model.TaskFullData
-import network.model.TaskShortData
-import taskslist.SelectedTaskCallback
 
 class SingleTaskApi : BaseApi() {
     private val apiContext = CoroutineScope(Dispatchers.Unconfined + supervisorJob)
@@ -20,7 +19,7 @@ class SingleTaskApi : BaseApi() {
     fun getTaskById(
         token: String,
         id: Int,
-        taskCallback: ApiTaskListHandler,
+        taskCallback: ApiTaskHandler,
         exceptionCallback: ApiExceptionHandler
     ) {
         requestEncodedPath = "/api/$API_VERSION/tasks/$id"
@@ -35,11 +34,16 @@ class SingleTaskApi : BaseApi() {
         }
     }
 
-    private fun requestAsync(token: String): Deferred<ChessTaskFullData> = apiContext.async {
+    private fun requestAsync(token: String): Deferred<ChessTask> = apiContext.async {
         val json = Json(JsonConfiguration.Stable)
         val response = makeGetRequest(requestHeaders = listOf(Pair("Authorization", "Bearer $token")))
         println(response)
         val parsedResponse = json.parse(TaskFullData.serializer(), response.readText())
-        ChessTaskFullData(parsedResponse.id, parsedResponse.fen, parsedResponse.pgn)
+        ChessTask(
+            parsedResponse.id,
+            getStartingPositions(parsedResponse.fen),
+            getStartingColor(parsedResponse.fen),
+            parsePgnString(parsedResponse.pgn)
+        )
     }
 }

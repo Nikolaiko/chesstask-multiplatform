@@ -1,12 +1,10 @@
 package onboarding.presenters
 
-import core.model.AuthorizationUserData
+import core.model.user.AuthorizationUserData
 import onboarding.model.enums.LoginMessageId
 import onboarding.model.enums.OnBoardingDestinationId
 import onboarding.model.enums.OnBoardingNewsId
-import onboarding.reducers.LoginReducer
 import onboarding.reducers.RegisterReducer
-import onboarding.views.LoginView
 import onboarding.views.RegisterView
 
 class RegisterPresenter(
@@ -25,7 +23,12 @@ class RegisterPresenter(
 
     private fun bindToView() {
         view?.credentialsChangeCallback = {
-            reducer.authorizationDataChange(AuthorizationUserData(it.first(), it.last()))
+            reducer.authorizationDataChange(
+                AuthorizationUserData(
+                    it.first(),
+                    it.last()
+                )
+            )
         }
 
         view?.registerCallback = {

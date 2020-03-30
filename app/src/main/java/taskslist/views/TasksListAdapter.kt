@@ -1,6 +1,6 @@
 package taskslist.views
 
-import core.model.ChessTaskShortData
+import core.model.task.ChessTaskShortData
 import sample.R
 import android.view.LayoutInflater
 import android.view.ViewGroup

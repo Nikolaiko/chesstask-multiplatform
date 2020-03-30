@@ -15,7 +15,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId 'ru.developer.multichess'
-        minSdkVersion 15
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName '1.0'
@@ -73,6 +73,9 @@ kotlin {
 
                 //serialization
                 implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
+
+                //UUID
+                implementation "com.benasher44:uuid:$uuid_version"
             }
         }
         commonTest {

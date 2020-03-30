@@ -1,6 +1,6 @@
 package onboarding.reducers
 
-import core.model.AuthorizationUserData
+import core.model.user.AuthorizationUserData
 import network.api.UserApi
 import onboarding.NewsCallback
 import onboarding.RegisterStateChangeCallback

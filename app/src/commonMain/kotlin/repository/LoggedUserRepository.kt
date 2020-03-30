@@ -1,6 +1,6 @@
 package repository
 
-import core.model.UserToken
+import core.model.user.UserToken
 
 expect class LoggedUserRepository {
     fun setLoggedUserTokens(tokens: UserToken)

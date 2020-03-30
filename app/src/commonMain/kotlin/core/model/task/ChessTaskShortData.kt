@@ -1,4 +1,4 @@
-package core.model
+package core.model.task
 
 data class ChessTaskShortData(
     val id: Int,

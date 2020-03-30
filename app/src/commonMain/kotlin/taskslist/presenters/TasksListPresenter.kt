@@ -1,6 +1,7 @@
 package taskslist.presenters
 
-import core.model.ChessTaskFullData
+import core.model.task.ChessTask
+import core.model.task.ChessTaskFullData
 import taskslist.model.enum.TasksListDestinationId
 import taskslist.model.enum.TasksListMessageId
 import taskslist.model.enum.TasksListNewsId
@@ -40,7 +41,7 @@ class TasksListPresenter(
                 TasksListNewsId.REQUEST_EXCEPTION -> view?.displayMessage(TasksListMessageId.REQUEST_EXCEPTION)
                 TasksListNewsId.LOGOUT -> view?.navigateTo(TasksListDestinationId.LOGIN_SCREEN)
                 TasksListNewsId.NAVIGATE_TO_TASK -> {
-                    when (val task: ChessTaskFullData? = it.data as? ChessTaskFullData) {
+                    when (val task: ChessTask? = it.data as? ChessTask) {
                         null -> view?.displayMessage(TasksListMessageId.LOADED_TASK_NULL)
                         else -> view?.loadedTaskReady(task)
                     }

@@ -1,7 +1,7 @@
 package network.api
 
-import core.model.AuthorizationUserData
-import core.model.UserToken
+import core.model.user.AuthorizationUserData
+import core.model.user.UserToken
 import io.ktor.client.statement.readText
 import io.ktor.http.ContentType
 import io.ktor.http.content.TextContent
