@@ -4,6 +4,7 @@ import core.model.task.ChessTaskShortData
 import network.model.TaskShortData
 import io.ktor.client.statement.readText
 import kotlinx.coroutines.*
+import kotlinx.serialization.builtins.list
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import kotlinx.serialization.list

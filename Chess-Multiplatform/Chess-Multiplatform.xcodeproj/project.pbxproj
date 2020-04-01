@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		342605FDCEE63BEC739291AE /* Pods_Chess_Multiplatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F7A9078EEFF0C0572C8A0F /* Pods_Chess_Multiplatform.framework */; };
+		CF84C6922434FD3400FA2A26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6912434FD3400FA2A26 /* AppDelegate.swift */; };
+		CF84C6942434FD3400FA2A26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6932434FD3400FA2A26 /* SceneDelegate.swift */; };
+		CF84C6962434FD3400FA2A26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6952434FD3400FA2A26 /* ViewController.swift */; };
+		CF84C6992434FD3400FA2A26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF84C6972434FD3400FA2A26 /* Main.storyboard */; };
+		CF84C69B2434FD3600FA2A26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF84C69A2434FD3600FA2A26 /* Assets.xcassets */; };
+		CF84C69E2434FD3600FA2A26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF84C69C2434FD3600FA2A26 /* LaunchScreen.storyboard */; };
+		CF84C6A62435213700FA2A26 /* app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6A52435213700FA2A26 /* app.framework */; };
+		CF84C6A72435213700FA2A26 /* app.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6A52435213700FA2A26 /* app.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CF84C6A82435213700FA2A26 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CF84C6A72435213700FA2A26 /* app.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		11F7A9078EEFF0C0572C8A0F /* Pods_Chess_Multiplatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chess_Multiplatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3A344022A780AA6C8238C0 /* Pods-Chess-Multiplatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess-Multiplatform.release.xcconfig"; path = "Target Support Files/Pods-Chess-Multiplatform/Pods-Chess-Multiplatform.release.xcconfig"; sourceTree = "<group>"; };
+		CF84C68E2434FD3400FA2A26 /* Chess-Multiplatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chess-Multiplatform.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF84C6912434FD3400FA2A26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CF84C6932434FD3400FA2A26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CF84C6952434FD3400FA2A26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF84C6982434FD3400FA2A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CF84C69A2434FD3600FA2A26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF84C69D2434FD3600FA2A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF84C69F2434FD3600FA2A26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF84C6A52435213700FA2A26 /* app.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = app.framework; path = Libs/app.framework; sourceTree = "<group>"; };
+		F0C9ADEB283441EB44BA2716 /* Pods-Chess-Multiplatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess-Multiplatform.debug.xcconfig"; path = "Target Support Files/Pods-Chess-Multiplatform/Pods-Chess-Multiplatform.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF84C68B2434FD3400FA2A26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF84C6A62435213700FA2A26 /* app.framework in Frameworks */,
+				342605FDCEE63BEC739291AE /* Pods_Chess_Multiplatform.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0454A903DA9684F029479CBE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F0C9ADEB283441EB44BA2716 /* Pods-Chess-Multiplatform.debug.xcconfig */,
+				7A3A344022A780AA6C8238C0 /* Pods-Chess-Multiplatform.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		70152F5BAF508F3441972D2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF84C6A52435213700FA2A26 /* app.framework */,
+				11F7A9078EEFF0C0572C8A0F /* Pods_Chess_Multiplatform.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF84C6852434FD3400FA2A26 = {
+			isa = PBXGroup;
+			children = (
+				CF84C6902434FD3400FA2A26 /* Chess-Multiplatform */,
+				CF84C68F2434FD3400FA2A26 /* Products */,
+				0454A903DA9684F029479CBE /* Pods */,
+				70152F5BAF508F3441972D2E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CF84C68F2434FD3400FA2A26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF84C68E2434FD3400FA2A26 /* Chess-Multiplatform.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF84C6902434FD3400FA2A26 /* Chess-Multiplatform */ = {
+			isa = PBXGroup;
+			children = (
+				CF84C6912434FD3400FA2A26 /* AppDelegate.swift */,
+				CF84C6932434FD3400FA2A26 /* SceneDelegate.swift */,
+				CF84C6952434FD3400FA2A26 /* ViewController.swift */,
+				CF84C6972434FD3400FA2A26 /* Main.storyboard */,
+				CF84C69A2434FD3600FA2A26 /* Assets.xcassets */,
+				CF84C69C2434FD3600FA2A26 /* LaunchScreen.storyboard */,
+				CF84C69F2434FD3600FA2A26 /* Info.plist */,
+			);
+			path = "Chess-Multiplatform";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF84C68D2434FD3400FA2A26 /* Chess-Multiplatform */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF84C6A22434FD3600FA2A26 /* Build configuration list for PBXNativeTarget "Chess-Multiplatform" */;
+			buildPhases = (
+				625B0EAFED3324D946A268D8 /* [CP] Check Pods Manifest.lock */,
+				CF84C68A2434FD3400FA2A26 /* Sources */,
+				CF84C68B2434FD3400FA2A26 /* Frameworks */,
+				CF84C68C2434FD3400FA2A26 /* Resources */,
+				CF84C6A82435213700FA2A26 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Chess-Multiplatform";
+			productName = "Chess-Multiplatform";
+			productReference = CF84C68E2434FD3400FA2A26 /* Chess-Multiplatform.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF84C6862434FD3400FA2A26 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Nikolai Baklanov";
+				TargetAttributes = {
+					CF84C68D2434FD3400FA2A26 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = CF84C6892434FD3400FA2A26 /* Build configuration list for PBXProject "Chess-Multiplatform" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF84C6852434FD3400FA2A26;
+			productRefGroup = CF84C68F2434FD3400FA2A26 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF84C68D2434FD3400FA2A26 /* Chess-Multiplatform */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF84C68C2434FD3400FA2A26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF84C69E2434FD3600FA2A26 /* LaunchScreen.storyboard in Resources */,
+				CF84C69B2434FD3600FA2A26 /* Assets.xcassets in Resources */,
+				CF84C6992434FD3400FA2A26 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		625B0EAFED3324D946A268D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Chess-Multiplatform-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF84C68A2434FD3400FA2A26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF84C6962434FD3400FA2A26 /* ViewController.swift in Sources */,
+				CF84C6922434FD3400FA2A26 /* AppDelegate.swift in Sources */,
+				CF84C6942434FD3400FA2A26 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CF84C6972434FD3400FA2A26 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF84C6982434FD3400FA2A26 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF84C69C2434FD3600FA2A26 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF84C69D2434FD3600FA2A26 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF84C6A02434FD3600FA2A26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CF84C6A12434FD3600FA2A26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF84C6A32434FD3600FA2A26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0C9ADEB283441EB44BA2716 /* Pods-Chess-Multiplatform.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZWXN4J2VCP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libs",
+				);
+				INFOPLIST_FILE = "Chess-Multiplatform/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Nikolai-Baklanov.Chess-Multiplatform";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF84C6A42434FD3600FA2A26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A3A344022A780AA6C8238C0 /* Pods-Chess-Multiplatform.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZWXN4J2VCP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libs",
+				);
+				INFOPLIST_FILE = "Chess-Multiplatform/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Nikolai-Baklanov.Chess-Multiplatform";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF84C6892434FD3400FA2A26 /* Build configuration list for PBXProject "Chess-Multiplatform" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF84C6A02434FD3600FA2A26 /* Debug */,
+				CF84C6A12434FD3600FA2A26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF84C6A22434FD3600FA2A26 /* Build configuration list for PBXNativeTarget "Chess-Multiplatform" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF84C6A32434FD3600FA2A26 /* Debug */,
+				CF84C6A42434FD3600FA2A26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF84C6862434FD3400FA2A26 /* Project object */;
+}
