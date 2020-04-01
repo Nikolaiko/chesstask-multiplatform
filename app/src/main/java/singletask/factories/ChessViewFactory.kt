@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.ImageView
 import core.model.task.figure.ChessFigureColor
 import core.model.task.figure.ChessFigureType
+import sample.R
 
 class ChessViewFactory (
     private val context: Context

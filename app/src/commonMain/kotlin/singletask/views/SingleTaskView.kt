@@ -1,15 +1,18 @@
 package singletask.views
 
 import core.model.task.figure.FigurePosition
+import singletask.SelectCellCallback
+import singletask.SelectFigureCallback
+import singletask.VoidCallback
 import singletask.model.board.BoardAction
 import singletask.model.figure.ChessFigureOnBoard
 
 interface SingleTaskView {
-//    val selectedFigureId: Observable<String>
-//    val selectedCell: Observable<FigurePosition>
-//    val exitButton: Observable<Unit>
-//    val restartButton: Observable<Unit>
-//    val undoButton: Observable<Unit>
+    var selectFigureCallback: SelectFigureCallback?
+    var selectCellCallback: SelectCellCallback?
+    var exitButtonCallback: VoidCallback?
+    var restartButtonCallback: VoidCallback?
+    var undoButtonCallback: VoidCallback?
 
     fun showWrongFigureMessage()
     fun showSolutionText()

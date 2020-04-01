@@ -19,7 +19,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.1"
-            app:srcCompat="@drawable/ic_svg_bishop" />
+            app:srcCompat="@drawable/ic_svg_logout_button"/>
 
     <TextView
             android:id="@+id/taskLabel"
@@ -841,7 +841,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/showAnswerButton">
+            app:layout_constraintTop_toBottomOf="@id/row8" android:layout_marginTop="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/answerLayout"
@@ -861,7 +861,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Answers PGN"
-                    tools:visibility="visible" />
+                    tools:visibility="visible"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

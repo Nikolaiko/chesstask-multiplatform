@@ -31,6 +31,7 @@ class TasksListApi : BaseApi() {
                 }
                 tasksCallback(parsedTasks)
             } catch (tasksListException: Exception) {
+                println(tasksListException)
                 exceptionCallback(tasksListException)
             }
         }

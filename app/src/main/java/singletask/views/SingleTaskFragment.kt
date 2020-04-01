@@ -1,22 +1,25 @@
 package singletask.views
 
-import TASK_FEN_PARAMETER
-import TASK_ID_PARAMETER
-import TASK_PGN_PARAMETER
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.NavHostFragment
+import singletask.getSolutionFromPgn
 import core.model.task.ChessTask
-import core.model.task.ChessTaskFullData
 import core.model.task.figure.FigurePosition
 import kotlinx.android.synthetic.main.fragment_single_task.*
 import sample.R
 import singletask.MAX_BOARD_INDEX
+import singletask.SelectCellCallback
+import singletask.SelectFigureCallback
+import singletask.VoidCallback
 import singletask.factories.ChessViewFactory
 import singletask.model.board.BoardAction
 import singletask.model.figure.ChessFigureOnBoard
@@ -28,6 +31,12 @@ class SingleTaskFragment : Fragment(), SingleTaskView {
     companion object {
         var selectedTask: ChessTask? = null
     }
+
+    override var exitButtonCallback: VoidCallback? = null
+    override var restartButtonCallback: VoidCallback? = null
+    override var undoButtonCallback: VoidCallback? = null
+    override var selectFigureCallback: SelectFigureCallback? = null
+    override var selectCellCallback: SelectCellCallback? = null
 
     private lateinit var factory: ChessViewFactory
 
@@ -53,10 +62,22 @@ class SingleTaskFragment : Fragment(), SingleTaskView {
 
         val reducer = SingleTaskReducer()
         presenter = SingleTaskPresenter(reducer)
+        factory = ChessViewFactory(context!!)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        answerText.text = getSolutionFromPgn(selectedTask!!)
+        taskLabel.text = resources.getString(R.string.task_label_title, selectedTask!!.pgnMoves.size)
+
+        showAnswerButton.setOnClickListener {
+            presenter?.openSolution()
+        }
+
+        backButton.setOnClickListener {
+            exitButtonCallback?.invoke()
+        }
 
         presenter?.attachView(this)
         parentLayout.viewTreeObserver.addOnGlobalLayoutListener( object : ViewTreeObserver.OnGlobalLayoutListener {
@@ -69,31 +90,45 @@ class SingleTaskFragment : Fragment(), SingleTaskView {
                             "id", context!!.packageName
                         ))
                         pieceCell.setOnClickListener {
-                            //_selectedCell.onNext(FigurePosition(i, j))
+                            selectCellCallback?.invoke(FigurePosition(i, j))
                         }
                     }
                 }
-                if (SingleTaskFragment.selectedTask != null) {
-                    presenter?.initTask(SingleTaskFragment.selectedTask!!)
+                if (selectedTask != null) {
+                    presenter?.initTask(selectedTask!!)
                 }
             }
         })
     }
 
     override fun showWrongFigureMessage() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        activity?.runOnUiThread {
+            Toast.makeText(context!!, getString(R.string.wrong_figure_error_message), Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun showSolutionText() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        activity?.runOnUiThread {
+            answerText.visibility = View.VISIBLE
+        }
     }
 
     override fun hideOpenSolutionButton() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        activity?.runOnUiThread {
+            showAnswerButton.visibility = View.INVISIBLE
+        }
     }
 
     override fun updateChessBoardSelection(selectedCells: List<FigurePosition>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        clearSelection()
+        for (currentCell in selectedCells) {
+            val pieceCell: ImageView = view!!.findViewById(resources.getIdentifier(
+                "cell${currentCell.row}${currentCell.column}",
+                "id", context!!.packageName
+            ))
+            pieceCell.setColorFilter(R.color.design_default_color_primary)
+            selectedBoardCells.add(currentCell)
+        }
     }
 
     override fun updateChessBoardPosition(position: List<ChessFigureOnBoard>) {
@@ -107,26 +142,86 @@ class SingleTaskFragment : Fragment(), SingleTaskView {
                 currentFigure.figureType
             )
             figureView.setOnClickListener {
-                _selectedFigureId.onNext(currentFigure.id)
+                selectFigureCallback?.invoke(currentFigure.id)
             }
             addFigureToScreen(newFigure)
         }
     }
 
     override fun applyAction(action: BoardAction) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        clearSelection()
+
+        if (action.removedFigure != null) {
+            val destroyedFigure = figuresOnView.first { it.id == action.removedFigure.id }
+            removeFigureFromScreen(destroyedFigure)
+        }
+
+        if (action.addedFigure != null) {
+            val figureView = factory.buildFigure(action.addedFigure.figureType, action.addedFigure.color)
+            val newFigure = ChessFigureView(
+                action.addedFigure.id,
+                figureView,
+                action.addedFigure.position,
+                action.addedFigure.figureType
+            )
+            figureView.setOnClickListener {
+                selectFigureCallback?.invoke(action.addedFigure.id)
+            }
+            addFigureToScreen(newFigure)
+        }
+
+        var movedFigure = figuresOnView.first { it.id == action.figure.id }
+        removeFigureFromScreen(movedFigure)
+
+        movedFigure = movedFigure.copy(position = action.endPosition)
+        addFigureToScreen(movedFigure)
     }
 
     override fun showWrongMoveDialog() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        activity?.runOnUiThread {
+            val manager: FragmentManager = fragmentManager!!
+            val dialog =  WrongMoveDialog()
+            dialog.restartCallback = {
+                restartButtonCallback?.invoke()
+                dialog.dismiss()
+            }
+
+            dialog.undoCallback = {
+                undoButtonCallback?.invoke()
+                dialog.dismiss()
+            }
+
+            dialog.exitCallback = {
+                exitButtonCallback?.invoke()
+                dialog.dismiss()
+            }
+
+            dialog.show(manager, resources.getString(R.string.dialog_id))
+        }
     }
 
     override fun showWinDialog() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        activity?.runOnUiThread {
+            val manager: FragmentManager = fragmentManager!!
+            val dialog =  WinDialog()
+            dialog.restartCallback = {
+                restartButtonCallback?.invoke()
+                dialog.dismiss()
+            }
+
+            dialog.exitCallback = {
+                exitButtonCallback?.invoke()
+                dialog.dismiss()
+            }
+
+            dialog.show(manager, resources.getString(R.string.win_dialog_id))
+        }
     }
 
     override fun closeView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        NavHostFragment
+            .findNavController(this)
+            .popBackStack()
     }
 
     private fun addFigureToScreen(figure: ChessFigureView) {
