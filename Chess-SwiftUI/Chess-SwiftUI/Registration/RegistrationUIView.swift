@@ -48,7 +48,7 @@ struct RegistrationUIView: View {
                         )
                 }
                 .disabled(!viewState.backButtonEnabled)
-            }
+            }            
             .onReceive(self.viewState.objectWillChange, perform: {
                 if self.viewState.newDestination == .login ||
                     self.viewState.newDestination == .taskslist {

@@ -13,6 +13,11 @@ class SingleTaskViewState: NSObject, ObservableObject, SingleTaskView  {
     var selectFigureCallback: ((String) -> Void)?
     var undoButtonCallback: (() -> Void)?
     
+    
+    var showWinAlert: Bool = false
+    var showWorngAlert: Bool = false
+    
+    @Published var showAlert: Bool = false
     @Published var solutionButtonVisible: Bool = true
     @Published var solutionTextVisible: Bool = false
     @Published var newDestination: AppDestination = .notset
@@ -49,6 +54,7 @@ class SingleTaskViewState: NSObject, ObservableObject, SingleTaskView  {
             removedFigureCell?.figureId = ""
             removedFigureCell?.figureType = .empty
             removedFigureCell?.figutreColor = .notset
+            figures[Int(action.removedFigure!.position.row)][Int(action.removedFigure!.position.column)] = removedFigureCell!
         }
         
         if action.addedFigure != nil {
@@ -59,7 +65,7 @@ class SingleTaskViewState: NSObject, ObservableObject, SingleTaskView  {
         movedFigureCell?.figureId = ""
         movedFigureCell?.figureType = .empty
         movedFigureCell?.figutreColor = .notset
-        figures[Int(action.figure.position.row)][Int(action.figure.position.column)] = movedFigureCell!
+        figures[Int(action.startPosition.row)][Int(action.startPosition.column)] = movedFigureCell!
         
         figures[Int(action.endPosition.row)][Int(action.endPosition.column)] = chessStateFromFigure(figure: action.figure)
         objectWillChange.send()
@@ -79,7 +85,9 @@ class SingleTaskViewState: NSObject, ObservableObject, SingleTaskView  {
     }
     
     func showWinDialog() {
-        
+        showWinAlert = true
+        showWorngAlert = false
+        showAlert = true
     }
     
     func showWrongFigureMessage() {
@@ -87,7 +95,9 @@ class SingleTaskViewState: NSObject, ObservableObject, SingleTaskView  {
     }
     
     func showWrongMoveDialog() {
-        
+        showWinAlert = false
+        showWorngAlert = true
+        showAlert = true
     }
     
     func updateChessBoardPosition(position: [ChessFigureOnBoard]) {

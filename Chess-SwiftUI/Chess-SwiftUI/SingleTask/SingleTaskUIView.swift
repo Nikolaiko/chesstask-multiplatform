@@ -106,15 +106,46 @@ struct SingleTaskUIView: View {
                     }
                 }                
             }
-            .onReceive(self.viewModel.objectWillChange, perform: {
-                print(self.viewModel.newDestination)
+            .onReceive(self.viewModel.objectWillChange, perform: {                
                 if self.viewModel.newDestination != .notset {
                     self.navState.destination = self.viewModel.newDestination
                 }
             })
             Spacer()
         }
-        
+        .alert(isPresented: $viewModel.showAlert, content: {
+            if viewModel.showWorngAlert {
+                return Alert(
+                    title: Text("Wrong move"),
+                    message: Text("This is wrong move."),
+                    primaryButton: .default(
+                        Text("Undo"),
+                        action: {
+                            self.viewModel.undoButtonCallback?()
+                        }),
+                    secondaryButton: .default(
+                        Text("Restart"),
+                        action: {
+                            self.viewModel.restartButtonCallback?()
+                        })
+                )
+            } else {
+                return Alert(
+                    title: Text("You win"),
+                    message: Text("Well done."),
+                    primaryButton: .default(
+                        Text("Exit"),
+                        action: {
+                            self.viewModel.exitButtonCallback?()
+                        }),
+                    secondaryButton: .default(
+                        Text("Restart"),
+                        action: {
+                            self.viewModel.restartButtonCallback?()
+                        })
+                )
+            }
+        })
     }
 }
 
