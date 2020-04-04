@@ -16,6 +16,8 @@ struct ContentView: View {
                 return AnyView(RegistrationUIView())
             case .taskslist:
                 return AnyView(TasksListUIView())
+            case .singletask:
+                return AnyView(SingleTaskUIView())
             default:
                 return AnyView(LoginUIView())
         }

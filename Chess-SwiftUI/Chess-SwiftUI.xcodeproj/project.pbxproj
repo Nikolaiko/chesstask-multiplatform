@@ -13,8 +13,6 @@
 		CF84C6BD2435F1BB00FA2A26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF84C6BC2435F1BB00FA2A26 /* Assets.xcassets */; };
 		CF84C6C02435F1BB00FA2A26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF84C6BF2435F1BB00FA2A26 /* Preview Assets.xcassets */; };
 		CF84C6C32435F1BB00FA2A26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF84C6C12435F1BB00FA2A26 /* LaunchScreen.storyboard */; };
-		CF84C6CC2435F5CA00FA2A26 /* app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6CB2435F5CA00FA2A26 /* app.framework */; };
-		CF84C6CD2435F5CA00FA2A26 /* app.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6CB2435F5CA00FA2A26 /* app.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF84C6D12435FFB200FA2A26 /* LoginStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6D02435FFB200FA2A26 /* LoginStateView.swift */; };
 		CF84C6D42436ED6800FA2A26 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6D32436ED6800FA2A26 /* NavigationState.swift */; };
 		CF84C6D62436EDC100FA2A26 /* AppDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6D52436EDC100FA2A26 /* AppDestination.swift */; };
@@ -22,16 +20,28 @@
 		CF84C6DB2436F17500FA2A26 /* RegistrationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6DA2436F17500FA2A26 /* RegistrationUIView.swift */; };
 		CF84C6DD243711B300FA2A26 /* RegistrationViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6DC243711B200FA2A26 /* RegistrationViewState.swift */; };
 		CF84C6E02437220C00FA2A26 /* TasksListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84C6DF2437220C00FA2A26 /* TasksListUIView.swift */; };
+		CF9AC64324385AB1004C4F3C /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC64224385AB1004C4F3C /* CellState.swift */; };
+		CF9AC64524385B21004C4F3C /* ChessPieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC64424385B21004C4F3C /* ChessPieceType.swift */; };
+		CF9AC64724385B5E004C4F3C /* ChessPieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC64624385B5E004C4F3C /* ChessPieceColor.swift */; };
+		CFA4F7C3243745170002B7F9 /* TaskRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4F7C2243745170002B7F9 /* TaskRowUIView.swift */; };
+		CFA4F7C5243745660002B7F9 /* TasksListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4F7C4243745660002B7F9 /* TasksListViewState.swift */; };
+		CFA4F7C824377AE70002B7F9 /* app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6CB2435F5CA00FA2A26 /* app.framework */; };
+		CFA4F7C924377AE70002B7F9 /* app.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6CB2435F5CA00FA2A26 /* app.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFA4F7CD2437C1460002B7F9 /* SingleTaskUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4F7CC2437C1460002B7F9 /* SingleTaskUIView.swift */; };
+		CFA4F7CF2437C16B0002B7F9 /* SingleTaskViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4F7CE2437C16B0002B7F9 /* SingleTaskViewState.swift */; };
+		CFB8C03924384A860013F520 /* CellUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8C03824384A860013F520 /* CellUIView.swift */; };
+		CFB8C03B24384C4F0013F520 /* OddRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8C03A24384C4F0013F520 /* OddRowUIView.swift */; };
+		CFB8C03D24384E660013F520 /* EvenRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8C03C24384E660013F520 /* EvenRowUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CF84C6CE2435F5CA00FA2A26 /* Embed Frameworks */ = {
+		CFA4F7CA24377AE70002B7F9 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF84C6CD2435F5CA00FA2A26 /* app.framework in Embed Frameworks */,
+				CFA4F7C924377AE70002B7F9 /* app.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +65,16 @@
 		CF84C6DA2436F17500FA2A26 /* RegistrationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUIView.swift; sourceTree = "<group>"; };
 		CF84C6DC243711B200FA2A26 /* RegistrationViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewState.swift; sourceTree = "<group>"; };
 		CF84C6DF2437220C00FA2A26 /* TasksListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListUIView.swift; sourceTree = "<group>"; };
+		CF9AC64224385AB1004C4F3C /* CellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellState.swift; sourceTree = "<group>"; };
+		CF9AC64424385B21004C4F3C /* ChessPieceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceType.swift; sourceTree = "<group>"; };
+		CF9AC64624385B5E004C4F3C /* ChessPieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieceColor.swift; sourceTree = "<group>"; };
+		CFA4F7C2243745170002B7F9 /* TaskRowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowUIView.swift; sourceTree = "<group>"; };
+		CFA4F7C4243745660002B7F9 /* TasksListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewState.swift; sourceTree = "<group>"; };
+		CFA4F7CC2437C1460002B7F9 /* SingleTaskUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTaskUIView.swift; sourceTree = "<group>"; };
+		CFA4F7CE2437C16B0002B7F9 /* SingleTaskViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTaskViewState.swift; sourceTree = "<group>"; };
+		CFB8C03824384A860013F520 /* CellUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUIView.swift; sourceTree = "<group>"; };
+		CFB8C03A24384C4F0013F520 /* OddRowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddRowUIView.swift; sourceTree = "<group>"; };
+		CFB8C03C24384E660013F520 /* EvenRowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvenRowUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF84C6CC2435F5CA00FA2A26 /* app.framework in Frameworks */,
+				CFA4F7C824377AE70002B7F9 /* app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +109,7 @@
 		CF84C6B52435F1B800FA2A26 /* Chess-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				CFA4F7CB2437C12D0002B7F9 /* SingleTask */,
 				CF84C6DE24371E2800FA2A26 /* TasksList */,
 				CF84C6D92436F0F600FA2A26 /* Registration */,
 				CF84C6D22436ED5100FA2A26 /* Navigation */,
@@ -151,8 +172,41 @@
 			isa = PBXGroup;
 			children = (
 				CF84C6DF2437220C00FA2A26 /* TasksListUIView.swift */,
+				CFA4F7C2243745170002B7F9 /* TaskRowUIView.swift */,
+				CFA4F7C4243745660002B7F9 /* TasksListViewState.swift */,
 			);
 			path = TasksList;
+			sourceTree = "<group>";
+		};
+		CF9AC64124385A95004C4F3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF9AC64224385AB1004C4F3C /* CellState.swift */,
+				CF9AC64424385B21004C4F3C /* ChessPieceType.swift */,
+				CF9AC64624385B5E004C4F3C /* ChessPieceColor.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFA4F7CB2437C12D0002B7F9 /* SingleTask */ = {
+			isa = PBXGroup;
+			children = (
+				CF9AC64124385A95004C4F3C /* Model */,
+				CFB8C03E243852FE0013F520 /* BoardUI */,
+				CFA4F7CC2437C1460002B7F9 /* SingleTaskUIView.swift */,
+				CFA4F7CE2437C16B0002B7F9 /* SingleTaskViewState.swift */,
+			);
+			path = SingleTask;
+			sourceTree = "<group>";
+		};
+		CFB8C03E243852FE0013F520 /* BoardUI */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8C03824384A860013F520 /* CellUIView.swift */,
+				CFB8C03A24384C4F0013F520 /* OddRowUIView.swift */,
+				CFB8C03C24384E660013F520 /* EvenRowUIView.swift */,
+			);
+			path = BoardUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +219,7 @@
 				CF84C6AF2435F1B800FA2A26 /* Sources */,
 				CF84C6B02435F1B800FA2A26 /* Frameworks */,
 				CF84C6B12435F1B800FA2A26 /* Resources */,
-				CF84C6CE2435F5CA00FA2A26 /* Embed Frameworks */,
+				CFA4F7CA24377AE70002B7F9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,13 +282,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF84C6D12435FFB200FA2A26 /* LoginStateView.swift in Sources */,
+				CFA4F7CD2437C1460002B7F9 /* SingleTaskUIView.swift in Sources */,
 				CF84C6D82436EF9300FA2A26 /* LoginUIView.swift in Sources */,
+				CFB8C03D24384E660013F520 /* EvenRowUIView.swift in Sources */,
+				CFB8C03924384A860013F520 /* CellUIView.swift in Sources */,
 				CF84C6B72435F1B800FA2A26 /* AppDelegate.swift in Sources */,
 				CF84C6D62436EDC100FA2A26 /* AppDestination.swift in Sources */,
+				CF9AC64724385B5E004C4F3C /* ChessPieceColor.swift in Sources */,
+				CF9AC64324385AB1004C4F3C /* CellState.swift in Sources */,
+				CFA4F7CF2437C16B0002B7F9 /* SingleTaskViewState.swift in Sources */,
 				CF84C6B92435F1B800FA2A26 /* SceneDelegate.swift in Sources */,
+				CFA4F7C3243745170002B7F9 /* TaskRowUIView.swift in Sources */,
 				CF84C6DD243711B300FA2A26 /* RegistrationViewState.swift in Sources */,
 				CF84C6BB2435F1B800FA2A26 /* ContentView.swift in Sources */,
+				CFB8C03B24384C4F0013F520 /* OddRowUIView.swift in Sources */,
 				CF84C6D42436ED6800FA2A26 /* NavigationState.swift in Sources */,
+				CFA4F7C5243745660002B7F9 /* TasksListViewState.swift in Sources */,
+				CF9AC64524385B21004C4F3C /* ChessPieceType.swift in Sources */,
 				CF84C6DB2436F17500FA2A26 /* RegistrationUIView.swift in Sources */,
 				CF84C6E02437220C00FA2A26 /* TasksListUIView.swift in Sources */,
 			);

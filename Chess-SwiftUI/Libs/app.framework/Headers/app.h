@@ -147,6 +147,14 @@ __attribute__((swift_name("LoggedUserRepository")))
 - (void)setLoggedUserTokensTokens:(AppUserToken *)tokens __attribute__((swift_name("setLoggedUserTokens(tokens:)")));
 @end;
 
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("LoggedUserRepository.Companion")))
+@interface AppLoggedUserRepositoryCompanion : AppBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@end;
+
 __attribute__((swift_name("SingleTaskView")))
 @protocol AppSingleTaskView
 @required
