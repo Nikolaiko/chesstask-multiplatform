@@ -25,7 +25,7 @@ class SingleTaskApi : BaseApi() {
         requestEncodedPath = "/api/$API_VERSION/tasks/$id"
         apiContext.launch {
             try {
-                withContext(Dispatchers.Default) {
+                withContext(Dispatchers.Unconfined) {
                     val task = requestAsync(token)
                     taskCallback(task)
                 }

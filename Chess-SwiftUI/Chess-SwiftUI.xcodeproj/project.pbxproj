@@ -23,10 +23,10 @@
 		CF9AC64324385AB1004C4F3C /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC64224385AB1004C4F3C /* CellState.swift */; };
 		CF9AC64524385B21004C4F3C /* ChessPieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC64424385B21004C4F3C /* ChessPieceType.swift */; };
 		CF9AC64724385B5E004C4F3C /* ChessPieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC64624385B5E004C4F3C /* ChessPieceColor.swift */; };
+		CF9AC64E2438D972004C4F3C /* app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6CB2435F5CA00FA2A26 /* app.framework */; };
+		CF9AC64F2438D972004C4F3C /* app.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6CB2435F5CA00FA2A26 /* app.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFA4F7C3243745170002B7F9 /* TaskRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4F7C2243745170002B7F9 /* TaskRowUIView.swift */; };
 		CFA4F7C5243745660002B7F9 /* TasksListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4F7C4243745660002B7F9 /* TasksListViewState.swift */; };
-		CFA4F7C824377AE70002B7F9 /* app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6CB2435F5CA00FA2A26 /* app.framework */; };
-		CFA4F7C924377AE70002B7F9 /* app.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF84C6CB2435F5CA00FA2A26 /* app.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFA4F7CD2437C1460002B7F9 /* SingleTaskUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4F7CC2437C1460002B7F9 /* SingleTaskUIView.swift */; };
 		CFA4F7CF2437C16B0002B7F9 /* SingleTaskViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA4F7CE2437C16B0002B7F9 /* SingleTaskViewState.swift */; };
 		CFB8C03924384A860013F520 /* CellUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8C03824384A860013F520 /* CellUIView.swift */; };
@@ -35,13 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CFA4F7CA24377AE70002B7F9 /* Embed Frameworks */ = {
+		CF9AC6502438D972004C4F3C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFA4F7C924377AE70002B7F9 /* app.framework in Embed Frameworks */,
+				CF9AC64F2438D972004C4F3C /* app.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFA4F7C824377AE70002B7F9 /* app.framework in Frameworks */,
+				CF9AC64E2438D972004C4F3C /* app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +219,7 @@
 				CF84C6AF2435F1B800FA2A26 /* Sources */,
 				CF84C6B02435F1B800FA2A26 /* Frameworks */,
 				CF84C6B12435F1B800FA2A26 /* Resources */,
-				CFA4F7CA24377AE70002B7F9 /* Embed Frameworks */,
+				CF9AC6502438D972004C4F3C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

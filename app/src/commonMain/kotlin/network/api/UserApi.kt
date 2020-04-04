@@ -14,7 +14,7 @@ import network.ApiLoginHandler
 import network.model.NewUserData
 
 class UserApi : BaseApi() {
-    private val apiContext = CoroutineScope(Dispatchers.Default + supervisorJob)
+    private val apiContext = CoroutineScope(Dispatchers.Unconfined + supervisorJob)
 
     fun loginUser(
         loginData: AuthorizationUserData,
@@ -24,7 +24,7 @@ class UserApi : BaseApi() {
         println("Login Start")
         apiContext.launch {
             try {
-                withContext(Dispatchers.Default) {
+                withContext(Dispatchers.Unconfined) {
                     requestEncodedPath = "/api/$API_VERSION/user/signin"
                     val tokens = loginAsync(loginData)
                     loginCallback(tokens)
@@ -42,7 +42,7 @@ class UserApi : BaseApi() {
     ) {
         apiContext.launch {
             try {
-                withContext(Dispatchers.Default) {
+                withContext(Dispatchers.Unconfined) {
                     requestEncodedPath = "/api/v1/user/signup"
                     registerAsync(registerData)
 

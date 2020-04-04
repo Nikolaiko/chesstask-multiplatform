@@ -26,7 +26,7 @@ class TasksListApi : BaseApi() {
     ) {
         apiContext.launch {
             try {
-                withContext(Dispatchers.Default) {
+                withContext(Dispatchers.Unconfined) {
                     val tasks = requestAsync(token)
                     val parsedTasks = tasks.map {
                         ChessTaskShortData(it.id, it.name)
