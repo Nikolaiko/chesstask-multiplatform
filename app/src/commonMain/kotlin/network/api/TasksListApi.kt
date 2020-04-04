@@ -26,22 +26,22 @@ class TasksListApi : BaseApi() {
     ) {
         apiContext.launch {
             try {
-                val tasks = requestAsync(token).await()
-                val parsedTasks = tasks.map {
-                    ChessTaskShortData(it.id, it.name)
+                withContext(Dispatchers.Default) {
+                    val tasks = requestAsync(token)
+                    val parsedTasks = tasks.map {
+                        ChessTaskShortData(it.id, it.name)
+                    }
+                    tasksCallback(parsedTasks)
                 }
-                tasksCallback(parsedTasks)
             } catch (tasksListException: Exception) {
-                println(tasksListException)
                 exceptionCallback(tasksListException)
             }
         }
     }
 
-    private fun requestAsync(token: String): Deferred<List<TaskShortData>> = apiContext.async {
+    private suspend fun requestAsync(token: String): List<TaskShortData> {
         val json = Json(JsonConfiguration.Stable)
         val response = makeGetRequest(requestHeaders = listOf(Pair("Authorization", "Bearer $token")))
-        println(response)
-        json.parse(TaskShortData.serializer().list, response.readText())
+        return json.parse(TaskShortData.serializer().list, response.readText())
     }
 }

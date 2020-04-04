@@ -25,21 +25,22 @@ class SingleTaskApi : BaseApi() {
         requestEncodedPath = "/api/$API_VERSION/tasks/$id"
         apiContext.launch {
             try {
-                val task = requestAsync(token).await()
-                taskCallback(task)
-
+                withContext(Dispatchers.Default) {
+                    val task = requestAsync(token)
+                    taskCallback(task)
+                }
             } catch (taskException: Exception) {
                 exceptionCallback.invoke(taskException)
             }
         }
     }
 
-    private fun requestAsync(token: String): Deferred<ChessTask> = apiContext.async {
+    private suspend fun requestAsync(token: String): ChessTask {
         val json = Json(JsonConfiguration.Stable)
         val response = makeGetRequest(requestHeaders = listOf(Pair("Authorization", "Bearer $token")))
-        println(response)
         val parsedResponse = json.parse(TaskFullData.serializer(), response.readText())
-        ChessTask(
+
+        return ChessTask(
             parsedResponse.id,
             getStartingPositions(parsedResponse.fen),
             getStartingColor(parsedResponse.fen),

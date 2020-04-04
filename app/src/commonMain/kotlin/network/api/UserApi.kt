@@ -14,18 +14,21 @@ import network.ApiLoginHandler
 import network.model.NewUserData
 
 class UserApi : BaseApi() {
-    private val apiContext = CoroutineScope(Dispatchers.Unconfined + supervisorJob)
+    private val apiContext = CoroutineScope(Dispatchers.Default + supervisorJob)
 
     fun loginUser(
         loginData: AuthorizationUserData,
         loginCallback: ApiLoginHandler,
         exceptionCallback: ApiExceptionHandler
     ) {
+        println("Login Start")
         apiContext.launch {
             try {
-                requestEncodedPath = "/api/$API_VERSION/user/signin"
-                val tokens = loginAsync(loginData).await()
-                loginCallback(tokens)
+                withContext(Dispatchers.Default) {
+                    requestEncodedPath = "/api/$API_VERSION/user/signin"
+                    val tokens = loginAsync(loginData)
+                    loginCallback(tokens)
+                }
             } catch (loginException: Exception) {
                 exceptionCallback(loginException)
             }
@@ -39,31 +42,31 @@ class UserApi : BaseApi() {
     ) {
         apiContext.launch {
             try {
-                requestEncodedPath = "/api/v1/user/signup"
-                registerAsync(registerData).await()
+                withContext(Dispatchers.Default) {
+                    requestEncodedPath = "/api/v1/user/signup"
+                    registerAsync(registerData)
 
-                requestEncodedPath = "/api/v1/user/signin"
-                val tokens = loginAsync(registerData).await()
-                registerCallback(tokens)
+                    requestEncodedPath = "/api/v1/user/signin"
+                    val tokens = loginAsync(registerData)
+                    registerCallback(tokens)
+                }
             } catch (loginException: Exception) {
                 exceptionCallback(loginException)
             }
         }
     }
 
-    private fun loginAsync(loginData: AuthorizationUserData): Deferred<UserToken> = apiContext.async {
+    private suspend fun loginAsync(loginData: AuthorizationUserData): UserToken  {
         val json = Json(JsonConfiguration.Stable)
         val jsonBody = json.stringify(AuthorizationUserData.serializer(), loginData)
         val response = makePostRequest(requestBody = TextContent(jsonBody, contentType = ContentType.Application.Json))
-        println(response)
-        json.parse(UserToken.serializer(), response.readText())
+        return json.parse(UserToken.serializer(), response.readText())
     }
 
-    private fun registerAsync(loginData: AuthorizationUserData): Deferred<NewUserData> = apiContext.async {
+    private suspend fun registerAsync(loginData: AuthorizationUserData): NewUserData {
         val json = Json(JsonConfiguration.Stable)
         val jsonBody = json.stringify(AuthorizationUserData.serializer(), loginData)
         val response = makePostRequest(requestBody = TextContent(jsonBody, contentType = ContentType.Application.Json))
-        println(response)
-        json.parse(NewUserData.serializer(), response.readText())
+        return json.parse(NewUserData.serializer(), response.readText())
     }
 }
